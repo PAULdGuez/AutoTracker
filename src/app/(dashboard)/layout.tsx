@@ -1,4 +1,5 @@
 import Navbar from '@/components/Navbar';
+import ParticlesBackground from '@/components/ParticlesBackground';
 
 export default function DashboardLayout({
     children,
@@ -7,8 +8,9 @@ export default function DashboardLayout({
 }) {
     return (
         <>
+            <ParticlesBackground />
             <Navbar />
-            <main className="page-container">
+            <main className="page-container" style={{ position: 'relative', zIndex: 1 }}>
                 {children}
             </main>
         </>

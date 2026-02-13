@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
+import ParticlesBackground from '@/components/ParticlesBackground';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -35,6 +36,7 @@ export default function LoginPage() {
 
     return (
         <div className="login-page">
+            <ParticlesBackground />
             <motion.div
                 className="login-card"
                 initial={{ opacity: 0, y: 20, scale: 0.98 }}

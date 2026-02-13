@@ -428,6 +428,123 @@
   background: #a0a0aa;
 }
 
+/* ---------- Toast Notifications ---------- */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  min-width: 320px;
+  max-width: 420px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.toast-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: #ffffff;
+  margin-top: 1px;
+}
+
+.toast-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.toast-message {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ededed;
+  line-height: 1.3;
+}
+
+.toast-detail {
+  font-size: 0.75rem;
+  color: #999999;
+  margin-top: 3px;
+  line-height: 1.35;
+}
+
+.toast-time {
+  font-size: 0.65rem;
+  color: #666666;
+  white-space: nowrap;
+  margin-top: 2px;
+  font-family: var(--font-mono);
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  color: #555555;
+  cursor: pointer;
+  font-size: 0.7rem;
+  padding: 2px 4px;
+  transition: color var(--transition-fast);
+  margin-top: -2px;
+}
+
+.toast-close:hover {
+  color: #ffffff;
+}
+
+/* Light mode toast */
+[data-theme="light"] .toast {
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .toast-icon {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #111111;
+}
+
+[data-theme="light"] .toast-message {
+  color: #111111;
+}
+
+[data-theme="light"] .toast-detail {
+  color: #666666;
+}
+
+[data-theme="light"] .toast-time {
+  color: #aaaaaa;
+}
+
+[data-theme="light"] .toast-close {
+  color: #bbbbbb;
+}
+
+[data-theme="light"] .toast-close:hover {
+  color: #333333;
+}
+
 /* ---------- Theme Toggle Button ---------- */
 .theme-toggle {
   width: 34px;

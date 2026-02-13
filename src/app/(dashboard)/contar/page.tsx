@@ -6,6 +6,7 @@ import { Project, TimeEntry } from '@/lib/types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
+import { useToast } from '@/components/ToastProvider';
 
 const PROJECT_COLORS = [
     '#6366f1', '#8b5cf6', '#ec4899', '#f43f5e',
@@ -15,6 +16,7 @@ const PROJECT_COLORS = [
 
 export default function ContarPage() {
     const supabase = createClient();
+    const { showToast } = useToast();
     const [projects, setProjects] = useState<Project[]>([]);
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const [entries, setEntries] = useState<TimeEntry[]>([]);
@@ -93,6 +95,10 @@ export default function ContarPage() {
             setMessage({ type: 'error', text: error.message });
         } else {
             setMessage({ type: 'success', text: '¡Horas registradas correctamente!' });
+            showToast(
+                'Registro creado',
+                `${parseFloat(hours)}h registradas en "${selectedProject.name}" para ${format(new Date(entryDate + 'T12:00:00'), 'dd MMM yyyy', { locale: es })}`
+            );
             setHours('');
             setComment('');
             fetchEntries(selectedProject.id);
@@ -117,6 +123,10 @@ export default function ContarPage() {
         });
 
         if (!error) {
+            showToast(
+                'Proyecto creado',
+                `"${newProjectName.trim()}" añadido a tu lista de proyectos`
+            );
             setShowModal(false);
             setNewProjectName('');
             setNewProjectDesc('');
