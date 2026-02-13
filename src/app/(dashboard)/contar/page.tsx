@@ -242,19 +242,7 @@ export default function ContarPage() {
 
                 {/* Main Panel - Time Entry */}
                 <div className="time-entry-panel">
-                    {!selectedProject ? (
-                        <div className="card">
-                            <div className="time-entry-empty">
-                                <div className="time-entry-empty-icon">⏱</div>
-                                <p style={{ fontSize: '1rem', fontWeight: 500, marginBottom: 4 }}>
-                                    Selecciona un proyecto
-                                </p>
-                                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                                    Elige un proyecto de la lista para registrar horas
-                                </p>
-                            </div>
-                        </div>
-                    ) : (
+                    {selectedProject && (
                         <motion.div
                             key={selectedProject.id}
                             initial={{ opacity: 0, x: 20 }}
