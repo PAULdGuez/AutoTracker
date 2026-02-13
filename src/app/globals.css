@@ -633,15 +633,15 @@ a {
   height: var(--navbar-height);
 }
 
-/* Red indicator line (visible when navbar is hidden) */
+/* Indicator line (visible when navbar is hidden) */
 .navbar-indicator {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 3px;
-  background: #ff0040;
-  box-shadow: 0 0 12px rgba(255, 0, 64, 0.6), 0 0 30px rgba(255, 0, 64, 0.2);
+  background: #ff69b4;
+  box-shadow: 0 0 12px rgba(255, 105, 180, 0.6), 0 0 30px rgba(255, 105, 180, 0.2);
   z-index: 1002;
   transition: opacity var(--transition-base);
 }
@@ -654,9 +654,9 @@ a {
   transform: translateX(-50%);
   width: 80px;
   height: 14px;
-  background: #ff0040;
+  background: #ff69b4;
   border-radius: 0 0 10px 10px;
-  box-shadow: 0 2px 16px rgba(255, 0, 64, 0.5), 0 0 30px rgba(255, 0, 64, 0.15);
+  box-shadow: 0 2px 16px rgba(255, 105, 180, 0.5), 0 0 30px rgba(255, 105, 180, 0.15);
   transition: all var(--transition-base);
 }
 

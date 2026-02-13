@@ -38,8 +38,8 @@ export default function Navbar() {
 
             <nav className="navbar">
                 <Link href="/inicio" className="navbar-brand">
-                    <div className="navbar-brand-icon">⏱</div>
-                    <span>TimeTracker</span>
+                    <div className="navbar-brand-icon">⧗</div>
+                    <span>𝕋𝕀𝕄𝔼𝔸𝕃𝕆</span>
                 </Link>
 
                 <div className="navbar-links">
@@ -60,7 +60,7 @@ export default function Navbar() {
                         onClick={toggleTheme}
                         title={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
                     >
-                        {theme === 'dark' ? '☀️' : '🌙'}
+                        {theme === 'dark' ? '◐' : '◑'}
                     </button>
                     <div className="navbar-avatar" title="Paul">P</div>
                     <button className="navbar-logout" onClick={handleLogout}>
