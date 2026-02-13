@@ -220,7 +220,7 @@ export default function ContarPage() {
                                                 }}
                                                 title={project.is_hidden ? 'Mostrar' : 'Ocultar'}
                                             >
-                                                {project.is_hidden ? '👁' : '🙈'}
+                                                {project.is_hidden ? 'Mostrar' : 'Ocultar'}
                                             </button>
                                         </div>
                                     </motion.div>

@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Project, TimeEntry } from '@/lib/types';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from '@/components/ThemeProvider';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -45,9 +46,7 @@ ChartJS.register(
     Filler
 );
 
-// Chart.js global defaults for dark theme
-ChartJS.defaults.color = '#999999';
-ChartJS.defaults.borderColor = 'rgba(255, 255, 255, 0.06)';
+// Chart.js defaults are set dynamically inside the component based on theme
 ChartJS.defaults.font.family = "'Inter', sans-serif";
 
 type AnalysisTab = 'proyecto' | 'general';
@@ -60,6 +59,7 @@ interface DetailPopupData {
 
 export default function AnalisisPage() {
     const supabase = createClient();
+    const { theme } = useTheme();
     const [projects, setProjects] = useState<Project[]>([]);
     const [allEntries, setAllEntries] = useState<TimeEntry[]>([]);
     const [activeTab, setActiveTab] = useState<AnalysisTab>('proyecto');
@@ -92,6 +92,17 @@ export default function AnalisisPage() {
     useEffect(() => {
         fetchData();
     }, [fetchData]);
+
+    // Update Chart.js defaults based on theme
+    useEffect(() => {
+        if (theme === 'light') {
+            ChartJS.defaults.color = '#555555';
+            ChartJS.defaults.borderColor = 'rgba(0, 0, 0, 0.08)';
+        } else {
+            ChartJS.defaults.color = '#999999';
+            ChartJS.defaults.borderColor = 'rgba(255, 255, 255, 0.06)';
+        }
+    }, [theme]);
 
     // =============================================
     // PER-PROJECT ANALYSIS

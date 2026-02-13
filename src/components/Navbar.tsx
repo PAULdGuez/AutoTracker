@@ -4,6 +4,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useTheme } from './ThemeProvider';
 
 const navLinks = [
     { href: '/inicio', label: 'Inicio' },
@@ -15,6 +16,7 @@ export default function Navbar() {
     const pathname = usePathname();
     const router = useRouter();
     const supabase = createClient();
+    const { theme, toggleTheme } = useTheme();
 
     const handleLogout = async () => {
         await supabase.auth.signOut();
@@ -53,6 +55,13 @@ export default function Navbar() {
                 </div>
 
                 <div className="navbar-user">
+                    <button
+                        className="theme-toggle"
+                        onClick={toggleTheme}
+                        title={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+                    >
+                        {theme === 'dark' ? '☀️' : '🌙'}
+                    </button>
                     <div className="navbar-avatar" title="Paul">P</div>
                     <button className="navbar-logout" onClick={handleLogout}>
                         Salir
