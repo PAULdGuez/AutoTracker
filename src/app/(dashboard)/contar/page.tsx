@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { useToast } from '@/components/ToastProvider';
+import { useTimer } from '@/context/TimerContext';
 
 const PROJECT_COLORS = [
     '#6366f1', '#8b5cf6', '#ec4899', '#f43f5e',
@@ -35,6 +36,16 @@ export default function ContarPage() {
     const [newProjectDesc, setNewProjectDesc] = useState('');
     const [newProjectColor, setNewProjectColor] = useState(PROJECT_COLORS[0]);
     const [expandedCommentId, setExpandedCommentId] = useState<string | null>(null);
+
+    const { isActive, elapsedSeconds, resetTimer } = useTimer();
+    const [useTimerMode, setUseTimerMode] = useState(false);
+
+    // Update hours if using timer mode
+    useEffect(() => {
+        if (isActive && useTimerMode) {
+            setHours((elapsedSeconds / 3600).toFixed(2));
+        }
+    }, [isActive, useTimerMode, elapsedSeconds]);
 
     const fetchProjects = useCallback(async () => {
         const { data, error } = await supabase
@@ -102,6 +113,10 @@ export default function ContarPage() {
             );
             setHours('');
             setComment('');
+            if (useTimerMode && isActive) {
+                resetTimer();
+                setUseTimerMode(false);
+            }
             fetchEntries(selectedProject.id);
         }
         setSaving(false);
@@ -280,6 +295,46 @@ export default function ContarPage() {
                                 </AnimatePresence>
 
                                 <form className="time-entry-form" onSubmit={handleSubmitEntry}>
+                                    {isActive && (
+                                        <div style={{ marginBottom: 16, padding: 12, background: 'rgba(74, 222, 128, 0.1)', border: '1px solid rgba(74, 222, 128, 0.2)', borderRadius: 8 }}>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12, color: '#4ade80', fontWeight: 500 }}>
+                                                <span>⏱ Cronómetro activo:</span>
+                                                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '1.1rem' }}>
+                                                    {new Date(elapsedSeconds * 1000).toISOString().substr(11, 8)}
+                                                </span>
+                                            </div>
+                                            <div style={{ display: 'flex', gap: 8 }}>
+                                                <button
+                                                    type="button"
+                                                    className="btn"
+                                                    onClick={() => setUseTimerMode(true)}
+                                                    style={{
+                                                        flex: 1,
+                                                        background: useTimerMode ? '#4ade80' : 'rgba(255,255,255,0.1)',
+                                                        color: useTimerMode ? '#000' : 'var(--text-primary)',
+                                                        fontSize: '0.85rem'
+                                                    }}
+                                                >
+                                                    Usar tiempo ({(elapsedSeconds / 3600).toFixed(2)}h)
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    className="btn"
+                                                    onClick={() => {
+                                                        setUseTimerMode(false);
+                                                        setHours('');
+                                                    }}
+                                                    style={{
+                                                        flex: 1,
+                                                        background: !useTimerMode ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.05)',
+                                                        fontSize: '0.85rem'
+                                                    }}
+                                                >
+                                                    Entrada manual
+                                                </button>
+                                            </div>
+                                        </div>
+                                    )}
                                     <div className="time-entry-row">
                                         <div className="form-group" style={{ margin: 0 }}>
                                             <label className="form-label" htmlFor="entry-date">Fecha</label>
@@ -303,8 +358,12 @@ export default function ContarPage() {
                                                 max="24"
                                                 placeholder="2.5"
                                                 value={hours}
-                                                onChange={(e) => setHours(e.target.value)}
+                                                onChange={(e) => {
+                                                    setHours(e.target.value);
+                                                    if (useTimerMode) setUseTimerMode(false);
+                                                }}
                                                 required
+                                                disabled={useTimerMode}
                                             />
                                         </div>
                                     </div>
