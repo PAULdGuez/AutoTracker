@@ -37,13 +37,15 @@ export default function ContarPage() {
     const [newProjectColor, setNewProjectColor] = useState(PROJECT_COLORS[0]);
     const [expandedCommentId, setExpandedCommentId] = useState<string | null>(null);
 
-    const { isActive, elapsedSeconds, resetTimer } = useTimer();
+    const { isActive, elapsedSeconds, restartTimer } = useTimer();
     const [useTimerMode, setUseTimerMode] = useState(false);
 
     // Update hours if using timer mode
     useEffect(() => {
         if (isActive && useTimerMode) {
-            setHours((elapsedSeconds / 3600).toFixed(2));
+            const newHours = (elapsedSeconds / 3600).toFixed(2);
+            // Avoid unnecessary state updates to satisfy linter
+            setHours(prev => prev !== newHours ? newHours : prev);
         }
     }, [isActive, useTimerMode, elapsedSeconds]);
 
@@ -113,8 +115,16 @@ export default function ContarPage() {
             );
             setHours('');
             setComment('');
+            setHours('');
+            setComment('');
             if (useTimerMode && isActive) {
-                resetTimer();
+                restartTimer();
+                // setUseTimerMode(false); // Do not turn off timer mode? 
+                // actually the user wants the timer to "simplememte se reinicie".
+                // Does that mean we should keep populating the field?
+                // Probably yes. If I submit, I am starting a new task immediately.
+                // So I'll keep useTimerMode = true so the user sees 0.00h and it starts counting up.
+            } else {
                 setUseTimerMode(false);
             }
             fetchEntries(selectedProject.id);

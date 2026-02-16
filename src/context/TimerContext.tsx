@@ -7,6 +7,7 @@ interface TimerContextType {
     startTime: number | null;
     toggleTimer: () => void;
     resetTimer: () => void;
+    restartTimer: () => void;
     elapsedSeconds: number;
 }
 
@@ -71,8 +72,17 @@ export function TimerProvider({ children }: { children: React.ReactNode }) {
         localStorage.removeItem('timerStartTime');
     }, []);
 
+    const restartTimer = useCallback(() => {
+        const now = Date.now();
+        setIsActive(true);
+        setStartTime(now);
+        setElapsedSeconds(0);
+        localStorage.setItem('timerIsActive', 'true');
+        localStorage.setItem('timerStartTime', now.toString());
+    }, []);
+
     return (
-        <TimerContext.Provider value={{ isActive, startTime, toggleTimer, resetTimer, elapsedSeconds }}>
+        <TimerContext.Provider value={{ isActive, startTime, toggleTimer, resetTimer, restartTimer, elapsedSeconds }}>
             {children}
         </TimerContext.Provider>
     );
