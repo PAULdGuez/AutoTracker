@@ -132,11 +132,14 @@
 
 [data-theme="light"] .navbar-logout {
   color: #666666;
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="light"] .navbar-logout:hover {
   color: #111111;
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.15);
 }
 
 /* Buttons */
@@ -170,8 +173,10 @@
 
 /* Toggle switches */
 [data-theme="light"] .toggle-switch {
-  background: #cccccc;
-  border-color: #bbbbbb;
+  background: rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-color: rgba(0, 0, 0, 0.12);
 }
 
 [data-theme="light"] .toggle-switch::after {
@@ -180,8 +185,8 @@
 }
 
 [data-theme="light"] .toggle-switch.active {
-  background: #111111;
-  border-color: #111111;
+  background: rgba(0, 0, 0, 0.75);
+  border-color: rgba(0, 0, 0, 0.8);
 }
 
 [data-theme="light"] .toggle-switch.active::after {
@@ -190,19 +195,22 @@
 
 /* Project chips */
 [data-theme="light"] .project-chip {
-  border-color: rgba(0, 0, 0, 0.12);
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 [data-theme="light"] .project-chip:hover {
-  border-color: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 0, 0, 0.18);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="light"] .project-chip.selected {
-  border-color: rgba(0, 0, 0, 0.3);
-  background: #f0f0f5;
+  border-color: rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
@@ -214,13 +222,25 @@
 }
 
 /* Analysis tabs */
+[data-theme="light"] .analysis-tabs {
+  background: rgba(255, 255, 255, 0.45);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
 [data-theme="light"] .analysis-tab {
   color: #888888;
 }
 
+[data-theme="light"] .analysis-tab:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
 [data-theme="light"] .analysis-tab.active {
   color: #111111;
-  border-color: #111111;
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 /* Chart containers */
@@ -343,7 +363,9 @@
 
 /* Comments section */
 [data-theme="light"] .chart-comment-item {
-  background: #f8f8fc;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-color: rgba(0, 0, 0, 0.06);
 }
 
@@ -389,14 +411,17 @@
 
 /* Secondary button */
 [data-theme="light"] .btn-secondary {
-  background: #e8e8ed;
-  border-color: rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgba(0, 0, 0, 0.1);
   color: #333333;
 }
 
 [data-theme="light"] .btn-secondary:hover {
-  background: #dddde3;
-  border-color: rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(0, 0, 0, 0.16);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
 /* Form labels */
@@ -554,8 +579,10 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-full);
-  background: transparent;
-  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
   font-size: 1rem;
   transition: all var(--transition-fast);
@@ -563,8 +590,8 @@
 }
 
 .theme-toggle:hover {
-  border-color: var(--border-hover);
-  background: rgba(128, 128, 128, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.12);
   transform: scale(1.05);
 }
 
@@ -776,16 +803,18 @@ a {
   font-size: 0.8rem;
   font-weight: 500;
   color: var(--text-tertiary);
-  background: transparent;
-  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
 .navbar-logout:hover {
   color: var(--text-secondary);
-  border-color: var(--border-hover);
-  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 /* ---------- Page Layout ---------- */
@@ -952,36 +981,48 @@ textarea.form-input {
 }
 
 .btn-secondary {
-  background: var(--bg-tertiary);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: var(--text-primary);
-  border: 1px solid var(--border-default);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .btn-secondary:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--border-hover);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .btn-ghost {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: var(--text-secondary);
-  border: 1px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .btn-ghost:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .btn-danger {
-  background: transparent;
+  background: rgba(239, 68, 68, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: var(--error);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
 .btn-danger:hover {
-  background: rgba(239, 68, 68, 0.1);
-  border-color: rgba(239, 68, 68, 0.5);
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.1);
 }
 
 .btn-full {
@@ -1192,23 +1233,28 @@ textarea.form-input {
 }
 
 .project-action-btn {
-  width: 28px;
+  width: auto;
   height: 28px;
+  padding: 0 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-sm);
-  background: transparent;
-  border: none;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--text-tertiary);
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   transition: all var(--transition-fast);
 }
 
 .project-action-btn:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 /* Time Entry Panel */
@@ -1339,7 +1385,10 @@ textarea.form-input {
 
 .time-entry-item-delete:hover {
   color: var(--error);
-  background: rgba(239, 68, 68, 0.1);
+  background: rgba(239, 68, 68, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(239, 68, 68, 0.15);
 }
 
 /* ---------- Modal ---------- */
@@ -1387,8 +1436,10 @@ textarea.form-input {
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-sm);
-  background: transparent;
-  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   color: var(--text-tertiary);
   cursor: pointer;
   font-size: 1.1rem;
@@ -1397,7 +1448,8 @@ textarea.form-input {
 
 .modal-close:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
 .modal-footer {
@@ -1437,12 +1489,15 @@ textarea.form-input {
 .analysis-tabs {
   display: flex;
   gap: 2px;
-  background: var(--bg-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: var(--radius-full);
   padding: 4px;
-  border: 1px solid var(--border-subtle);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   margin-bottom: 32px;
   width: fit-content;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .analysis-tab {
@@ -1460,12 +1515,16 @@ textarea.form-input {
 
 .analysis-tab:hover {
   color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .analysis-tab.active {
   color: var(--text-primary);
-  background: var(--bg-tertiary);
-  box-shadow: var(--shadow-sm);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .chart-container {
@@ -1585,8 +1644,10 @@ textarea.form-input {
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-sm);
-  background: transparent;
-  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-secondary);
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -1594,8 +1655,9 @@ textarea.form-input {
 
 .calendar-nav-btn:hover {
   color: var(--text-primary);
-  border-color: var(--border-hover);
-  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 .calendar-month-label {
@@ -1621,22 +1683,27 @@ textarea.form-input {
   border-radius: var(--radius-full);
   font-size: 0.8rem;
   font-weight: 500;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--text-secondary);
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
 .project-chip:hover {
-  border-color: var(--border-hover);
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.1);
   color: var(--text-primary);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .project-chip.selected {
-  border-color: var(--border-active);
-  background: rgba(99, 102, 241, 0.1);
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.12);
   color: var(--text-primary);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
 }
 
 .project-chip-dot {
@@ -1666,16 +1733,18 @@ textarea.form-input {
   width: 40px;
   height: 22px;
   border-radius: var(--radius-full);
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-default);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   cursor: pointer;
   position: relative;
   transition: all var(--transition-fast);
 }
 
 .toggle-switch.active {
-  background: var(--accent-primary);
-  border-color: var(--accent-primary);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .toggle-switch::after {
@@ -1687,6 +1756,7 @@ textarea.form-input {
   height: 16px;
   border-radius: var(--radius-full);
   background: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   transition: transform var(--transition-fast);
 }
 
@@ -1709,7 +1779,10 @@ textarea.form-input {
   align-items: flex-start;
   gap: 10px;
   padding: 10px 12px;
-  background: var(--bg-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-sm);
   border-left: 3px solid;
 }
@@ -1953,8 +2026,10 @@ textarea.form-input {
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-sm);
-  background: transparent;
-  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   color: var(--text-tertiary);
   cursor: pointer;
   font-size: 1.1rem;
@@ -1963,7 +2038,8 @@ textarea.form-input {
 
 .detail-popup-close:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
 .detail-popup-entry {
@@ -2028,8 +2104,8 @@ textarea.form-input {
 
 /* ---------- Monochromatic Toggle ---------- */
 .toggle-switch.active {
-  background: #ededed;
-  border-color: #ededed;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .toggle-switch.active::after {
@@ -2038,8 +2114,8 @@ textarea.form-input {
 
 /* ---------- Monochromatic project chip selected ---------- */
 .project-chip.selected {
-  border-color: rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.12);
   color: var(--text-primary);
 }
 
