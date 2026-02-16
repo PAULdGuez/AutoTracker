@@ -34,6 +34,7 @@ export default function ContarPage() {
     const [newProjectName, setNewProjectName] = useState('');
     const [newProjectDesc, setNewProjectDesc] = useState('');
     const [newProjectColor, setNewProjectColor] = useState(PROJECT_COLORS[0]);
+    const [expandedCommentId, setExpandedCommentId] = useState<string | null>(null);
 
     const fetchProjects = useCallback(async () => {
         const { data, error } = await supabase
@@ -376,7 +377,13 @@ export default function ContarPage() {
                                                 <span className="time-entry-item-hours">
                                                     {entry.hours}h
                                                 </span>
-                                                <span className="time-entry-item-comment">
+                                                <span
+                                                    className={`time-entry-item-comment ${expandedCommentId === entry.id ? 'expanded' : ''}`}
+                                                    onClick={() => setExpandedCommentId(
+                                                        expandedCommentId === entry.id ? null : entry.id
+                                                    )}
+                                                    title={entry.comment || ''}
+                                                >
                                                     {entry.comment || '—'}
                                                 </span>
                                                 <button

@@ -1137,7 +1137,7 @@ textarea.form-input {
 /* ---------- Contar (Time Entry) ---------- */
 .contar-layout {
   display: grid;
-  grid-template-columns: 340px 1fr;
+  grid-template-columns: 340px minmax(0, 1fr);
   gap: 24px;
   align-items: start;
 }
@@ -1319,6 +1319,9 @@ textarea.form-input {
   flex-direction: column;
   gap: 8px;
   margin-top: 16px;
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: 4px;
 }
 
 .time-entry-item {
@@ -1332,6 +1335,8 @@ textarea.form-input {
   border-radius: var(--radius-md);
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all var(--transition-fast);
+  min-width: 0;
+  flex-shrink: 0;
 }
 
 .time-entry-item:hover {
@@ -1358,9 +1363,26 @@ textarea.form-input {
   font-size: 0.85rem;
   color: var(--text-tertiary);
   flex: 1;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border-radius: var(--radius-sm);
+  padding: 2px 6px;
+  margin: -2px -6px;
+}
+
+.time-entry-item-comment:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+}
+
+.time-entry-item-comment.expanded {
+  white-space: normal;
+  word-break: break-word;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .time-entry-item-delete {
